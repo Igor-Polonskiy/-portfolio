@@ -1,3 +1,10 @@
+ @font-face {
+    font-family: Comfortaa; /* Имя шрифта */
+    src: url(../fonts/Comfortaa-Regular.ttf); /* Путь к файлу со шрифтом */
+   }
+   h1, a {
+    font-family: Comfortaa;
+   }
 .haeder{
 	
 }
