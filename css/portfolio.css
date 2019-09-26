@@ -1,16 +1,32 @@
 .haeder{
-	position: fixed;
-	top: 0;
-    left: 0;
-    width: 100%;
+	
 }
 .logo_img {
 	width: 150px;
 }
 .welcome_page {
-min-height: 100vh;
-width: 100%;
-background-image: url(../img/editors-keys-3NY445d2dVk-unsplash.jpg);
-background-size: cover;
-background-position: 50% 50%;
+	display: flex;
+	align-items: center;
+	color: white;
+	
+	min-height: 100vh;
+	width: 100%;
+	background-image: url(../img/editors-keys-3NY445d2dVk-unsplash.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+}
+.welcome_page h1{
+	text-align: center;
+	
+}
+.navbar-nav li{
+	margin-left: 20px; 
+	
+}
+.navbar-nav a{
+	color: blue;
+	font-size: 18px;
+}
+.nav-link {
+
 }
