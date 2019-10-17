@@ -2,11 +2,11 @@
     font-family: Comfortaa; /* Имя шрифта */
     src: url(../fonts/Comfortaa-Regular.ttf); /* Путь к файлу со шрифтом */
    }
-   h1, a {
+   h1, h2, a {
     font-family: Comfortaa;
    }
-.haeder{
-	
+.bkackbag {
+	background-color: rgba(0,0,0,0.8);
 }
 .logo_img {
 	width: 150px;
@@ -24,8 +24,13 @@
 }
 .welcome_page h1{
 	text-align: center;
-	font-size: 50px;
-	
+	font-size: 40px;
+	text-shadow:0 0 2px black/*#01a7fd*/; 
+}
+.welcome_page p{
+	text-align: center;
+	font-size: 20px;
+	color: #01a7fd;
 }
 .navbar-nav li{
 	margin-left: 20px; 
@@ -35,12 +40,15 @@
 	color: blue;
 	font-size: 18px;
 }
-.nav-link {
+.stack_of_tech {
+	padding-top: 50px;
+	padding-bottom: 50px;
 
+	text-align: center;
 }
 @media(max-width: 750px){
 	.welcome_page h1{
 	
-		font-size: 30px;
+		font-size: 24px;
 	}
 }
