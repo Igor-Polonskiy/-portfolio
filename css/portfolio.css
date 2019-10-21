@@ -5,9 +5,12 @@
    h1, h2, a {
     font-family: Comfortaa;
    }
-.bkackbag {
-	background-color: rgba(0,0,0,0.8);
+.blackbag {
+	transition: 0.5s;
+	background-color: rgba(0,0,0,0.9);
 }
+
+
 .logo_img {
 	width: 150px;
 }
@@ -45,6 +48,21 @@
 	padding-bottom: 50px;
 
 	text-align: center;
+}
+.hr {
+	height: 0;
+	border:none;
+	border-top: 3px solid #01a7fd;
+}
+.stack__items{
+	padding-top: 50px;
+}
+.stack__item {
+	padding: 50px;
+}
+.dark_color{
+	background-color: #222;
+	color: white;
 }
 @media(max-width: 750px){
 	.welcome_page h1{
