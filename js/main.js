@@ -8,3 +8,6 @@ $(window).scroll(function(){
     $('nav').removeClass('blackbag');
  }
 });
+$('.navbar-nav>li>a').on('click', function(){
+    $('.navbar-collapse').collapse('hide');
+});
