@@ -9,10 +9,15 @@
 	transition: 0.5s;
 	background-color: rgba(0,0,0,0.9);
 }
+.blue {
+	color: #01a7fd;
+}
 
-
-.logo_img {
-	width: 150px;
+.logo_img i{
+	font-size: 25px;
+}
+.logo_img:hover i{
+	color: #01a7fd;
 }
 .welcome_page {
 	display: flex;
@@ -43,7 +48,7 @@
 	color: blue;
 	font-size: 18px;
 }
-.stack_of_tech {
+.stack_of_tech, .why__me, .portfolio, .contacts {
 	padding-top: 50px;
 	padding-bottom: 50px;
 
@@ -57,16 +62,48 @@
 .stack__items{
 	padding-top: 50px;
 }
-.stack__item {
+.stack__item, .why__me__item {
 	padding: 50px;
 }
+.stack__item i,
+.why__me__item i{
+	transition: 0.3s;
+	font-size: 50px;
+}
+.stack__item:hover i{
+	font-size: 60px;
+	transition: 0.3s;
+}
+.stack__item__ico, .why__me__ico, .contacts__ico {
+	height: 70px;
+}
 .dark_color{
-	background-color: #222;
+	background-color: #333;
 	color: white;
+}
+.portfolio__item {
+	padding: 20px;
+}
+.portfolio__item img{
+	transition: 0.3s;
+	height: 170px;
+}
+.portfolio__item:hover img{
+	transition: 0.3s;
+	transform: scale(1.1);
+}
+@media(max-width: 1200px) and  (min-width: 750px){
+	.portfolio__item img{
+		height: 150px;
+	}
 }
 @media(max-width: 750px){
 	.welcome_page h1{
 	
 		font-size: 24px;
+	}
+	.portfolio__item img{
+		height: 150px;
+
 	}
 }

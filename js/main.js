@@ -1,4 +1,4 @@
-
+ AOS.init();
 $(window).scroll(function(){
 
   var docscroll=$(document).scrollTop();
