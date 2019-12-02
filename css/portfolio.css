@@ -91,24 +91,35 @@
 }
 .portfolio__item img{
 	transition: 0.3s;
-	height: 170px;
+	height: 200px;
 }
 .portfolio__item:hover img{
 	transition: 0.3s;
 	transform: scale(1.1);
 }
-@media(max-width: 1200px) and  (min-width: 750px){
+.contacts a{
+	text-decoration: none;
+	font-family: inherit;
+	color: inherit;
+}
+@media(max-width: 1200px) and  (min-width: 991px){
 	.portfolio__item img{
-		height: 150px;
+		height: 170px;
 	}
 }
-@media(max-width: 750px){
+@media(max-width: 991px){
 	.welcome_page h1{
 	
 		font-size: 24px;
 	}
 	.portfolio__item img{
-		height: 150px;
+		height: 220px;
+
+	}
+}
+@media(max-width: 500px){
+	.portfolio__item img{
+		height: 170px;
 
 	}
 }
