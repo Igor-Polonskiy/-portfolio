@@ -100,7 +100,7 @@
 .contacts a{
 	text-decoration: none;
 	font-family: inherit;
-	color: inherit;
+	color: white;
 }
 @media(max-width: 1200px) and  (min-width: 991px){
 	.portfolio__item img{
