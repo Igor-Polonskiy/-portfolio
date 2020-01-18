@@ -2,6 +2,7 @@ const { series, parallel, src, pipe, dest} = require('gulp');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const remove = require('gulp-clean')
+const postcss = require('gulp-postcss');
 
 function clean(cb) {
   return src('dist/**', {read: false})
@@ -13,10 +14,10 @@ function cleanTemp(cb) {
 }
 
 function cssTranspile(cb) {
-  // body omitted
-  cb();
+   return src('./css/*.css')
+        .pipe(postcss())
+        .pipe(dest('./dest'));
 }
-
 function cssVendorsMinify(cb) {
   // body omitted
  return src('./css/vendors/*.css')
@@ -56,6 +57,7 @@ exports.default = series(
   clean,
   jsTranspile,
   jsBundle,
+  cssTranspile,
   cssVendorsMinify,
   cssVendorsBundle,
   // parallel(cssMinify, jsMinify),
