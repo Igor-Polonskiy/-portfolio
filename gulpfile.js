@@ -1,9 +1,15 @@
 const { series, parallel, src, pipe, dest} = require('gulp');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
+const remove = require('gulp-clean')
+
 function clean(cb) {
-  // body omitted
-  cb();
+  return src('dist/**', {read: false})
+        .pipe(remove());
+}
+function cleanTemp(cb) {
+  return src('./css/vendors/min', {read: false})
+        .pipe(remove());
 }
 
 function cssTranspile(cb) {
@@ -11,19 +17,17 @@ function cssTranspile(cb) {
   cb();
 }
 
-function cssMinify(cb) {
+function cssVendorsMinify(cb) {
   // body omitted
-  src('./css/vendors/*.css')
+ return src('./css/vendors/*.css')
     .pipe(cleanCSS('*.css'))
-    .pipe(dest('./css/min.css/'));
-  cb();
+    .pipe(dest('./css/vendors/min/'));
 }
-function cssBundle(cb) {
+function cssVendorsBundle(cb) {
   // body omitted
-    src('./css/min.css/*.css')
-    .pipe(concat('vendors.css'))
-    .pipe(dest('./dist/'));
-  cb();
+  return src('./css/vendors/min/*.css')
+    .pipe(concat('vendors.min.css'))
+    .pipe(dest('./dist/')); 
 }
 function jsTranspile(cb) {
   // body omitted
@@ -32,10 +36,9 @@ function jsTranspile(cb) {
 
 function jsBundle(cb) {
   // body omitted
-  src('./js/*.js')
+  return src('./js/*.js')
     .pipe(concat('all.js'))
-    .pipe(dest('./dist/'));
-  cb();
+    .pipe(dest('./dist/')); 
 }
 
 function jsMinify(cb) {
@@ -51,10 +54,11 @@ function publish(cb) {
 
 exports.default = series(
   clean,
-  parallel(
-    cssBundle,
-    series(jsTranspile, jsBundle)
-  ),
-  parallel(cssMinify, jsMinify),
+  jsTranspile,
+  jsBundle,
+  cssVendorsMinify,
+  cssVendorsBundle,
+  // parallel(cssMinify, jsMinify),
+  cleanTemp,
   publish
 );
