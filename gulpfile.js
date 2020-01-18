@@ -16,7 +16,7 @@ function cleanTemp(cb) {
 function cssTranspile(cb) {
    return src('./css/*.css')
         .pipe(postcss())
-        .pipe(dest('./dest'));
+        .pipe(dest('./dist'));
 }
 function cssVendorsMinify(cb) {
   // body omitted

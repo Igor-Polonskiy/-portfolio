@@ -1,7 +1,8 @@
-module.exports = {
-  parser: 'sugarss',
+module.exports = {  
   map: false,
   plugins: {
-    'postcss-plugin': {}
+    'postcss-plugin': {},
+    'autoprefixer' : {},
+    'cssnano': {}
   }
 }
