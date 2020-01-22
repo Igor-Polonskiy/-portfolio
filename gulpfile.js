@@ -1,8 +1,20 @@
 const { series, parallel, src, pipe, dest} = require('gulp');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
-const remove = require('gulp-clean')
+const remove = require('gulp-clean');
 const postcss = require('gulp-postcss');
+// const rsync = require('gulp-rsync');  !!! ПОСМОТРЕТЬ ВИДОС
+const gutil = require('gulp-util');
+const ftp = require('vinyl-ftp');
+const watch = require('gulp-watch');
+
+/** Configuration **/
+var user = 'n91632yo_total'
+var password = '6A*cAQGr'
+var host = 'n91632yo.beget.tech'
+var port = 21
+var localFilesGlob = ['img/**/*', 'fonts/**/*', 'dist/**/*', 'index.html']
+var remoteFolder = '/portfolio'
 
 function clean(cb) {
   return src('dist/**', {read: false})
@@ -48,10 +60,41 @@ function jsMinify(cb) {
 }
 
 function publish(cb) {
-  // body omitted
-  cb();
+  var conn = getFtpConnection()
+
+  return src(localFilesGlob, { base: '.', buffer: false })
+    .pipe(conn.newer(remoteFolder)) // only upload newer files
+    .pipe(conn.dest(remoteFolder))
 }
 
+function watcher() {
+  var conn = getFtpConnection()
+
+  watch(localFilesGlob).on('change', function(event) {
+    console.log(
+      'Changes detected! Uploading file "' + event.path + '", ' + event.type
+    )
+
+    return src([event.path], { base: '.', buffer: false })
+      .pipe(conn.newer(remoteFolder)) // only upload newer files
+      .pipe(conn.dest(remoteFolder))
+  })
+}
+
+function getFtpConnection() {
+  return ftp.create({
+    host: host,
+    port: port,
+    user: user,
+    password: password,
+    parallel: 5,
+    log: gutil.log,
+  })
+}
+
+exports.publish = publish;
+
+exports.watcher = watcher;
 
 exports.default = series(
   clean,
